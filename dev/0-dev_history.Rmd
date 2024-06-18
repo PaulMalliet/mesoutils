@@ -14,6 +14,7 @@ All commands that you use to use when developing packages...
 ```{r description}
 # Describe your package
 fusen::fill_description(
+  overwrite = TRUE,
   pkg = here::here(),
   fields = list(
     Title = "Build A Package From Rmarkdown File",
