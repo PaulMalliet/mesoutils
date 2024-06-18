@@ -16,30 +16,47 @@ library(testthat)
 ```{r development-load}
 # Load already included functions if relevant
 pkgload::load_all(export_all = FALSE)
+
+
+
 ```
 
 # my_fun
 
-```{r function-my_fun}
-#' my_fun Title
+```{r function-get_info_data}
+#' get_info_data Title
 #'
-#' @return 1
-#' @export
+#' @param data a dataframe
+#'
+#' @return two messages
+#' @export 
 #'
 #' @examples
-my_fun <- function() {
-  1
+
+get_info_data <- function(data){
+
+ 
+if (!is.data.frame(data)){stop(paste0(data, " is not a dataframe"))}  
+  
+dimension <- c(ncol(data), nrow(data))
+print(dimension)
+
+names <- colnames(data)
+print(names)
 }
+
 ```
 
-```{r examples-my_fun}
-my_fun()
+```{r examples-get_info_data}
+get_info_data(iris)
 ```
 
 ```{r tests-my_fun}
-test_that("my_fun works", {
+test_that("get_info_data works", {
 
+  expect_error(get_info_data("mydata"), "mydata is not a dataframe") 
 })
+
 ```
 
 
